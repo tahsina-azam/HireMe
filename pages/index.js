@@ -1,19 +1,64 @@
-import Container from "@mui/material/Container";
-import Head from "next/head";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import { styled } from "@mui/system";
 import Image from "next/image";
-import Navbar from "../componant/Navbar/Navbar";
-import styles from "../styles/Home.module.css";
-import Card from "@mui/material/Card";
-import CssBaseline from "@mui/material/CssBaseline";
-import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
-import { Toolbar } from "@mui/material";
-import { width } from "@mui/system";
+import Button from "@mui/material/Button";
+import { useState } from "react";
+import RegisterModal from "../component/RegisterModal/RegisterModal";
+import AuthContext, { useAuth } from "../context/AuthProvider";
+const CustomButton = styled("button")({
+  variant: "text",
+  color: "black",
+  fontWeight: "bold",
+  fontFamily: "Roboto",
+  fontSize: "15px",
+  border: "none",
+  backgroundColor: "inherit",
+  cursor: "pointer",
+});
 export default function Home() {
+  const [signUpModal, setsignUpModalOpen] = useState(false);
+  const signUpHandler = () => {
+    setsignUpModalOpen(true);
+  };
   return (
     <>
-      <Navbar />
+      <AppBar
+        position='fixed'
+        sx={{
+          backgroundColor: "white",
+          marginLeft: "20px",
+          boxShadow: "none",
+          color: "black",
+        }}>
+        <Toolbar sx={{ justifyContent: "space-between" }}>
+          <Stack direction='row'>
+            <Typography
+              variant='h6'
+              noWrap
+              component='div'
+              sx={{
+                color: "black",
+                fontFamily: "futura",
+                fontWeight: "bold",
+              }}>
+              HireMe
+            </Typography>
+          </Stack>
+          <Stack direction='row' spacing={4}>
+            <CustomButton>Explore</CustomButton>
+            <CustomButton>Become a service provider</CustomButton>
+            <CustomButton>SignIn</CustomButton>
+            <CustomButton onClick={signUpHandler}>Join</CustomButton>
+          </Stack>
+        </Toolbar>
+      </AppBar>
+      {signUpModal && (
+        <RegisterModal open={signUpModal} handleClose={setsignUpModalOpen} />
+      )}
+
       <Stack
         direction='row'
         component='main'
