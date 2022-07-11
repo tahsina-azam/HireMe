@@ -32,7 +32,7 @@ const arr = [
 function AdminGrid() {
   return (
     <>
-      <Container maxWidth="lg" sx={{ mt: 4, mb: 4, marginTop: 0 }}>
+      <Container maxWidth="lg" sx={{ mt: 4, mb: 4, marginTop: 8 }}>
         <Grid container spacing={3}>
           {/* Chart */}
 
@@ -79,6 +79,7 @@ const Card = ({ description, budget, type,address,days, userId }) => {
             display: "flex",
             flexDirection: "column",
           }}
+            style={{ border: "1px solid black" }}
         >
           <AllUserbudget title={description} budget={budget} type={type} address={address} days={days} userId={userId}/>
         </Paper>

@@ -9,6 +9,7 @@ import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import Autocomplete from "@mui/material/Autocomplete";
 import SendIcon from '@mui/icons-material/Send';
+import NavBar from "../../src/components/App-Bar/userAppbar"
 const works = ["plumber", "ac repairer", "cook", "cleaner","pest control"];
 
 
@@ -25,31 +26,22 @@ export default function BasicCard() {
         setValues({ ...values, [prop]: event.target.value });
       };
 
-      const handleSubmit = () =>{
-        console.log(values);
-      }
-    
-      const handleClickShowPassword = () => {
-        setValues({
-          ...values,
-          showPassword: !values.showPassword,
-        });
-      };
-    
-      const handleMouseDownPassword = (event) => {
-        event.preventDefault();
-      };
   return (
+    <>
+    <div>
+    <NavBar/>
+    </div>
     <div>
          <Box
         sx={{
-          marginTop: 4,
+          borderColor: 'primary.main',
+          marginTop: 10,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-         <Card sx={{ minWidth: 275, maxWidth: 500 }}>
+         <Card sx={{ minWidth: 275, maxWidth: 500  }} style={{ border: "1px solid blue" }}>
       <CardContent>
         <Typography variant="h5" align="center">
           Post your job
@@ -129,5 +121,6 @@ export default function BasicCard() {
     </Card>
       </Box>
     </div>
+    </>
   );
 }
