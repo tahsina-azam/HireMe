@@ -7,6 +7,7 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 import RegisterModal from "../component/RegisterModal/RegisterModal";
+import LoginModal from "../component/RegisterModal/LoginModal";
 import AuthContext, { useAuth } from "../context/AuthProvider";
 const CustomButton = styled("button")({
   variant: "text",
@@ -19,10 +20,21 @@ const CustomButton = styled("button")({
   cursor: "pointer",
 });
 export default function Home() {
-  const [signUpModal, setsignUpModalOpen] = useState(false);
+  const [Modal, setModalOpen] = useState(false);
+   const [signInModal, setsignInModalOpen] = useState(false);
+  const [type,setType] = useState("");
   const signUpHandler = () => {
-    setsignUpModalOpen(true);
+    setType("signUp")
+    setModalOpen(true);
   };
+  const signInHandler = () => {
+    console.log('yoooooo')
+    setsignInModalOpen(true);
+  };
+ const serviceProviderHandler = () =>{
+   setType("service")
+    setModalOpen(true);
+  }
   return (
     <>
       <AppBar
@@ -49,15 +61,19 @@ export default function Home() {
           </Stack>
           <Stack direction='row' spacing={4}>
             <CustomButton>Explore</CustomButton>
-            <CustomButton>Become a service provider</CustomButton>
-            <CustomButton>SignIn</CustomButton>
+            <CustomButton onClick={serviceProviderHandler}>Become a service provider</CustomButton>
+            <CustomButton onClick={signInHandler}>SignIn</CustomButton>
             <CustomButton onClick={signUpHandler}>Join</CustomButton>
           </Stack>
         </Toolbar>
       </AppBar>
-      {signUpModal && (
-        <RegisterModal open={signUpModal} handleClose={setsignUpModalOpen} />
+      {Modal && (
+        <RegisterModal open={Modal} handleClose={setModalOpen} type={type}/>
       )}
+      {signInModal && (
+        <LoginModal open={signInModal} handleClose={setsignInModalOpen}/>
+      )}
+     
 
       <Stack
         direction='row'

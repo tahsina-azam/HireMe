@@ -21,11 +21,12 @@ const style = {
 export default function RegisterModal(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
   const [helperText, setHelperText] = useState("");
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [passHelperText, setPassHelperText] = useState("");
-
+  const [file, setFile] = useState([]);
   // mail change
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -49,16 +50,30 @@ export default function RegisterModal(props) {
     }
     setPassword(e.target.value);
   };
-
+  const handleNameChange = (e) =>{
+    setName(e.target.value);
+  }
+  const handleInput = (e) => {
+    if (e.target.files.length > 0) {
+      setFile(e.target.files[0]);
+    }
+  };
   const submitHandler = async (e) => {
     e.preventDefault();
     const newUser = {
+      name: name,
       email: email,
       password: password,
+      role: "client",
+      nid: "",
     };
     props.handleClose(false);
-
     if (emailValidation(email).valid && !passwordStrength(password)) {
+      if(props.type == "service")
+       {
+        uploadfiles(file)
+        return;
+       }
       await axios
       .post("/api/register", newUser)
       .then(function (res) {
@@ -71,7 +86,36 @@ export default function RegisterModal(props) {
       });
       setEmail("");
       setPassword("");
+      setName("");
     }
+  };
+    const uploadfiles = (files) => {
+    if (!files) return;
+    const imageRef = ref(storage, `/nid/${files.name}`);
+    uploadBytes(imageRef, file).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then(async (url) => {
+        const body = {
+          name: name,
+          email: email,
+          password: password,
+          nid: url,
+          role: 'Service Provider'
+        };
+
+        const res = await axios.post("/api/register", body).then(function (res) {
+        setMsg(res.data.msg);
+        setErr(res.data.err);
+        console.log(res);
+      })
+      .catch(function (e) {
+        console.log(e);
+      });
+      setEmail("");
+      setPassword("");
+      setName("");
+        
+      });
+    });
   };
   return (
     <Modal
@@ -84,8 +128,16 @@ export default function RegisterModal(props) {
       <form onSubmit={submitHandler}>
         <Stack direction='column' spacing={4} sx={style}>
           <Typography variant='h6' sx={{ textAlign: "center" }}>
-            SignUp{" "}
+           {props.type=='service'?'Become a Service Provider':'SignUp'}
           </Typography>
+          <TextField
+
+            id='filled-basic'
+            label='Name'
+            type='text'
+            value={name}
+            onChange={handleNameChange}
+          />
           <TextField
             helperText={helperText}
             id='filled-basic'
@@ -104,6 +156,12 @@ export default function RegisterModal(props) {
             onChange={handlePasswordChange}
             error={passwordError}
           />
+          {props.type=='service' && (<>
+            <h5 style={{marginTop:'6px'}}>Upload National ID</h5>
+        <input style={{marginTop:'4px'}} type="file"  accept='image/png, image/jpeg'
+          onChange={handleInput}></input>
+        </>
+      )}
           <Button variant='contained' type='submit'>
             Submit
           </Button>

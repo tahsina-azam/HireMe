@@ -6,7 +6,7 @@ const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const router = useRouter();
-  const [auth, setAuth] = useState({});
+  const [user, setUser] = useState({});
   const [IsAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
   const dummy = "dummy";
@@ -28,7 +28,9 @@ export const AuthProvider = ({ children }) => {
           { withCredentials: true }
         );
         const email = result.data.email;
-        setAuth({ user: email });
+        const name = result.data.name;
+        const role = result.data.role
+        setUser({ email: email, name: name, role:role });
         if (result.data.role === "admin") setIsAdmin(true);
         setLoading(false);
       } catch (e) {
@@ -51,9 +53,10 @@ export const AuthProvider = ({ children }) => {
         },
         { withCredentials: true }
       );
-
-      const email = result.data.email;
-      setAuth({ user: email });
+        const email = result.data.email;
+        const name = result.data.name;
+        const role = result.data.role
+        setUser({ email: email, name: name, role:role });
       if (result.data.role == "admin") setIsAdmin(true);
       setLoading(false);
       router.push("/");
@@ -69,7 +72,7 @@ export const AuthProvider = ({ children }) => {
       const result = await axios.post(
       "/api/logout"
       )
-      setAuth({});
+      setUser({});
       setIsAdmin(false);
       setLoading(false);
       router.push('/')
@@ -84,7 +87,7 @@ export const AuthProvider = ({ children }) => {
   }
   return (
     <AuthContext.Provider
-      value={{ auth, setAuth, dummy, logIn, loading, IsAdmin, setIsAdmin,logout }}>
+      value={{ user, setUser, dummy, logIn, loading, IsAdmin, setIsAdmin,logout }}>
       {children}
     </AuthContext.Provider>
   );
