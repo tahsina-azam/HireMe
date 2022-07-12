@@ -1,6 +1,7 @@
 import { Container, Grid, Link, Paper } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import AllUserbudget from "./CardBody";
+import AdminLibrarySearch from "../common/SearchBar";
 
 const arr = [
   {
@@ -18,11 +19,16 @@ const arr = [
 ];
 
 function AdminGrid() {
+  const [fields,setFields]=useState(arr);
   return (
     <>
+      <Container maxWidth="lg" sx={{ mt: 4, mb: 4, marginTop: 10 }}>
+        <AdminLibrarySearch items={fields}
+              updateParent={setFields}/>
+      </Container>
       <Container maxWidth="lg" sx={{ mt: 4, mb: 4, marginTop: 12 }}>
         <Grid container spacing={3}>
-          {arr.map((item) => (
+          {fields.map((item) => (
             <MemoisedCard
               key={item.type}
               type={item.type}
@@ -49,7 +55,7 @@ const Card = ({ type,link }) => {
             flexDirection: "column",
             bgcolor: "lightskyblue"
           }}
-            style={{ border: "1px solid black" }}
+            style={{ border: "1px solid black" ,backgroundColor:"lightskyblue"}}
         >
           <AllUserbudget type={type} link={link}/>
         </Paper>

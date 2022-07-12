@@ -4,8 +4,8 @@ import { styled } from "@mui/system";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import { useState } from "react";
-import Link from "next/link";
-import AdminLibrarySearch from "../common/SearchBar";
+import Router from "next/router";
+
 
 const CustomButton = styled("Button")({
   variant: "text",
@@ -45,13 +45,18 @@ export default function Navbar(props) {
               }}>
               HireMe
             </Typography>
-            <AdminLibrarySearch/>
           </Stack>
           
           <Stack direction='row' spacing={4}>
-           <CustomButton>Dashboard</CustomButton>
-            <CustomButton>post</CustomButton>
-            <CustomButton onClick={signUpHandler}>Profile</CustomButton>
+           <CustomButton onClick={(event)=>{
+             Router.push("/user");
+           }}>Dashboard</CustomButton>
+            <CustomButton onClick={(event)=>{
+             Router.push("/user/postWork");
+           }}>post</CustomButton>
+            <CustomButton onClick={(event)=>{
+             Router.push("/profile");
+           }}>Profile</CustomButton>
             <CustomButton>Logout</CustomButton>
           </Stack>
         </Toolbar>
