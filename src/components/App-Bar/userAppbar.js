@@ -4,6 +4,8 @@ import { styled } from "@mui/system";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import { useState } from "react";
+import Link from "next/link";
+import AdminLibrarySearch from "../common/SearchBar";
 
 const CustomButton = styled("Button")({
   variant: "text",
@@ -31,7 +33,7 @@ export default function Navbar(props) {
           color: "black",
         }}>
         <Toolbar sx={{ justifyContent: "space-between" }}>
-          <Stack direction='row'>
+          <Stack direction='row' spacing={4}>
             <Typography
               variant='h6'
               noWrap
@@ -43,10 +45,11 @@ export default function Navbar(props) {
               }}>
               HireMe
             </Typography>
+            <AdminLibrarySearch/>
           </Stack>
           
           <Stack direction='row' spacing={4}>
-            <CustomButton>Dashboard</CustomButton>
+           <CustomButton>Dashboard</CustomButton>
             <CustomButton>post</CustomButton>
             <CustomButton onClick={signUpHandler}>Profile</CustomButton>
             <CustomButton>Logout</CustomButton>
