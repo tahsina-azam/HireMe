@@ -46,8 +46,12 @@ export default function Navbar(props) {
           </Stack>
           
           <Stack direction='row' spacing={4}>
-            <CustomButton>Dashboard</CustomButton>
-            <CustomButton>Jobs</CustomButton>
+            <CustomButton onClick={(event)=>{
+             Router.push("/worker");
+           }}>Dashboard</CustomButton>
+            <CustomButton onClick={(event)=>{
+             Router.push("/worker/works");
+           }}>Jobs</CustomButton>
             <CustomButton>Logout</CustomButton>
           </Stack>
         </Toolbar>
