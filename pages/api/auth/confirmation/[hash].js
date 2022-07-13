@@ -29,6 +29,12 @@ export default async (req, res) => {
       role: getUser[0].role,
     };
     settCookie(req, res, currentUser);
-    res.redirect("/");
+    if(getUser[0].role=="client"){
+      res.redirect("/user");
+    }
+    else{
+      res.redirect("/worker");
+    }
+    //res.redirect("/");
   }
 };

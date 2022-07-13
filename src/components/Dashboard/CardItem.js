@@ -5,17 +5,50 @@ import AdminLibrarySearch from "../common/SearchBar";
 
 const arr = [
   {
-    type: "Ac repairer",
-    link: "http://localhost:3000/worker/works",
+    type: "Ac-Repairer",
+    link: "http://localhost:3000/Ac-Repairer",
+  },
+  {
+    type: "Electrician",
+    link: "http://localhost:3000/user/types/Electrician"
   },
   {
     type: "Plumber",
-    link: "http://localhost:3000/worker/works",
+    link: "http://localhost:3000/user/types/Plumber",
   },
   {
-    type: "cook",
-    link: "http://localhost:3000/worker/works",
+    type: "Cook",
+    link: "http://localhost:3000/user/types/cook",
   },
+  {
+    type: "Pest-Controller",
+    link: "http://localhost:3000/user/types/Pest-Cntroller"
+  },
+  {
+    type: "Care-Taker",
+    link: "http://localhost:3000/user/types/Care-Taker"
+  },
+  {
+    type: "Sofa-Cleaner",
+    link: "http://localhost:3000/user/types/Pest-Cntroller"
+  },
+  {
+    type: "Music-Instrument-Repairer",
+    link: "http://localhost:3000/user/types/Music-Instrument-Repairer"
+  },
+  {
+    type: "Home-Shifting-Helper",
+    link: "http://localhost:3000/user/types/Home-Shifting-Helper"
+  },
+  {
+    type: "Car-Repairer",
+    link: "http://localhost:3000/user/types/Car-Repairer"
+  },
+  {
+    type: "Home-Nursing",
+    link: "http://localhost:3000/user/types/Home-Nursing"
+  },
+ 
 ];
 
 function AdminGrid() {
@@ -23,7 +56,7 @@ function AdminGrid() {
   return (
     <>
       <Container maxWidth="lg" sx={{ mt: 4, mb: 4, marginTop: 10 }}>
-        <AdminLibrarySearch items={fields}
+        <AdminLibrarySearch items={arr}
               updateParent={setFields}/>
       </Container>
       <Container maxWidth="lg" sx={{ mt: 4, mb: 4, marginTop: 12 }}>

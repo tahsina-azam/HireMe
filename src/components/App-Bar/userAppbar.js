@@ -55,6 +55,9 @@ export default function Navbar(props) {
              Router.push("/user/postWork");
            }}>post</CustomButton>
             <CustomButton onClick={(event)=>{
+             Router.push("/myposts");
+           }}>My posts</CustomButton>
+            <CustomButton onClick={(event)=>{
              Router.push("/profile");
            }}>Profile</CustomButton>
             <CustomButton>Logout</CustomButton>
