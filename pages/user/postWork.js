@@ -10,10 +10,16 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from "@mui/material/Autocomplete";
 import SendIcon from '@mui/icons-material/Send';
 import NavBar from "../../src/components/App-Bar/userAppbar"
+import axios from "axios"
+import { useAuth } from '../../context/AuthProvider';
+import { useState } from 'react';
 const works = ["plumber", "ac repairer", "cook", "cleaner","pest control"];
 
 
+
 export default function BasicCard() {
+   const {user} = useAuth();
+   const [type, setType] = useState("");
     const [values, setValues] = React.useState({
         description: '',
         address: '',
@@ -25,6 +31,22 @@ export default function BasicCard() {
       const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
       };
+      const handleSubmit = () =>{
+        const data={
+          userid:user.email,
+          description: values.description,
+          address: values.address,
+          budget:values.budget,
+          type:type,
+          time:values.time
+        };
+        console.log(data);
+        axios.post("/api/user/post",data).then((res)=>{
+          console.log(res);
+        }).catch((err)=>{
+          console.log(err);
+        })
+      }
 
   return (
     <>
@@ -93,7 +115,7 @@ export default function BasicCard() {
         <FormControl sx={{ m: 1 }} variant="filled"> 
         <Autocomplete
                     freeSolo
-                    value={values.type}
+                    value={type}
                     disablePortal
                     id="combo-box-demo"
                     sx={{ width: 450 }}
@@ -106,7 +128,11 @@ export default function BasicCard() {
                         id="role"
                         label="type"
                         name="role"
-                        onChange={handleChange('type')}
+                        onChange={(e) => {
+                          setVal(e.target.value);
+                          handleChange(val);
+                        }}
+                        //onChange={handleChange('type')}
                       />
                     )}
                   />
@@ -114,7 +140,7 @@ export default function BasicCard() {
       </div>
       </CardContent>
       <CardActions style={{justifyContent: 'center'}}>
-      <Button variant="contained"  endIcon={<SendIcon />}>
+      <Button variant="contained" onClick={handleSubmit} endIcon={<SendIcon />}>
             Post
       </Button>
       </CardActions>

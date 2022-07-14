@@ -1,54 +1,23 @@
 import { Container, Grid, Link, Paper } from "@mui/material";
 import React, { useState } from "react";
-import AllUserbudget from "./CardBody";
+import AllUserbudget from "./workerbody";
 import AdminLibrarySearch from "../common/SearchBar";
 
 const arr = [
   {
     type: "Ac-Repairer",
-    link: "http://localhost:3000/user/types/Ac-Repairer",
+    name: "Rahim Sheikh",
+    amount: 500,
+    rating: 9.5,
+    phone: "0132494859"
   },
   {
-    type: "Electrician",
-    link: "http://localhost:3000/user/types/Electrician"
-  },
-  {
-    type: "Plumber",
-    link: "http://localhost:3000/user/types/Plumber",
-  },
-  {
-    type: "Cook",
-    link: "http://localhost:3000/user/types/cook",
-  },
-  {
-    type: "Pest-Controller",
-    link: "http://localhost:3000/user/types/Pest-Cntroller"
-  },
-  {
-    type: "Care-Taker",
-    link: "http://localhost:3000/user/types/Care-Taker"
-  },
-  {
-    type: "Sofa-Cleaner",
-    link: "http://localhost:3000/user/types/Pest-Cntroller"
-  },
-  {
-    type: "Music-Instrument-Repairer",
-    link: "http://localhost:3000/user/types/Music-Instrument-Repairer"
-  },
-  {
-    type: "Home-Shifting-Helper",
-    link: "http://localhost:3000/user/types/Home-Shifting-Helper"
-  },
-  {
-    type: "Car-Repairer",
-    link: "http://localhost:3000/user/types/Car-Repairer"
-  },
-  {
-    type: "Home-Nursing",
-    link: "http://localhost:3000/user/types/Home-Nursing"
-  },
- 
+    type: "Ac-Repairer",
+    name: "Karim Sheikh",
+    amount: 600,
+    rating: 5,
+    phone: "0132494859"
+  }, 
 ];
 
 function AdminGrid() {
@@ -65,7 +34,10 @@ function AdminGrid() {
             <MemoisedCard
               key={item.type}
               type={item.type}
-              link={item.link}
+              name={item.name}
+              amount={item.amount}
+              rating={item.rating}
+              phone={item.phone}
             />
           ))}
         </Grid>
@@ -76,11 +48,11 @@ function AdminGrid() {
 
 export default AdminGrid;
 
-const Card = ({ type,link }) => {
+const Card = ({ type,name,amount,rating,phone}) => {
   return (
     <>
       <Grid item xs={12} md={4} lg={4} >
-        <a href={link}>
+        
         <Paper
           sx={{
             padding: "2rem",
@@ -91,9 +63,9 @@ const Card = ({ type,link }) => {
           }}
             style={{ border: "1px solid black" ,backgroundColor:"lightskyblue"}}
         >
-          <AllUserbudget type={type} link={link}/>
+          <AllUserbudget type={type} name={name} amount={amount} rating={rating} phone={phone}/>
         </Paper>
-        </a>
+        
       </Grid>
     </>
   );

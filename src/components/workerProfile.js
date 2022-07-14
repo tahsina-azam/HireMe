@@ -10,9 +10,11 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
+import { useAuth } from '../../context/AuthProvider';
 import { Box } from '@mui/system';
 
 function workerProfile() {
+  const {user}=useAuth();
   return (
     <div>
           <Box
@@ -34,18 +36,23 @@ function workerProfile() {
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Rahim Sheikh
+          {user.name}
         </Typography>
         <Typography gutterBottom variant="h6" component="div">
           Type: Ac repairer
         </Typography>
         <Typography gutterBottom variant="h7" component="div">
-          Phone:01384XXXXXX
+          {user.email}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           Adress: Guali gram, Gaibandha
         </Typography>
       </CardContent>
+      <CardActions style={{justifyContent: 'center'}}>
+      <Button variant="contained" >
+            update account
+      </Button>
+      </CardActions>
     </Card>
     <List
       sx={{
@@ -64,10 +71,10 @@ function workerProfile() {
       {[0, 1, 2, 3, 4].map((sectionId) => (
         <li key={`section-${sectionId}`}>
           <ul>
-            <ListSubheader>{`I'm sticky ${sectionId}`}</ListSubheader>
-            {[0, 1, 2].map((item) => (
+            <ListSubheader>{`anonymous ${sectionId}`}</ListSubheader>
+            {[1].map((item) => (
               <ListItem key={`item-${sectionId}-${item}`}>
-                <ListItemText primary={`Item ${item}`} />
+                <ListItemText primary={`Rated 10 out of 10 review: ${item} work was good`} />
               </ListItem>
             ))}
           </ul>
