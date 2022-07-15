@@ -5,8 +5,12 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { Box } from '@mui/system';
 import { Typography } from '@mui/material';
+import { useAuth } from '../../context/AuthProvider';
+import Button from '@mui/material';
 
-function userProfile() {
+export default function UserProfile() {
+  const {user}=useAuth();
+
   return (
     <div>
         <Box
@@ -27,19 +31,23 @@ function userProfile() {
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Rahim Sheikh
+         {user.name}
         </Typography>
         <Typography gutterBottom variant="h6" component="div">
-          Type: Ac repairer
+          {user.email}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Adress: Guali gram, Gaibandha
+         {user.role}
         </Typography>
       </CardContent>
+      {/* <CardActions style={{justifyContent: 'center'}}>
+      <Button variant="contained">
+            Post
+      </Button>
+      </CardActions> */}
     </Card>
       </Box>
     </div>
   )
 }
 
-export default userProfile

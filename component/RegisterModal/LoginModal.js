@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import { useAuth } from "../../context/AuthProvider";
 import axios from 'axios'
+import { useRouter } from "next/router";
 const style = {
   position: "absolute",
   top: "50%",
@@ -23,6 +24,8 @@ export default function LoginModal(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [helperText, setHelperText] = useState("");
+  const {user} = useAuth();
+  const router = useRouter();
   // mail change
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -43,7 +46,14 @@ export default function LoginModal(props) {
       setEmail("");
       setPassword("");
     props.handleClose(false);
-     
+    if(user){
+      if(user.role=="client"){
+       router.push("/user");
+      }
+      else{
+        router.push("/worker");
+      }
+    }
     
   };
    console.log(props.open)

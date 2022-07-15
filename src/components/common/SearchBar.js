@@ -36,7 +36,7 @@ const AdminLibrarySearch = (props) => {
    */
   const searchKeyword = (searchTerm) => {
     const book=books;
-    if (searchTerm !== "") {
+    if (searchTerm !== "" && searchTerm.length>1) {
       const newBookList = book.filter((searchItem) => {
         return Object.values(searchItem)
           .join(" ")
