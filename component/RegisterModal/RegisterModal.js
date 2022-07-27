@@ -6,6 +6,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import { emailValidation, passwordStrength } from "../../validation/validation";
+import {storage} from "../../firebase"
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import axios from 'axios'
 const style = {
   position: "absolute",
