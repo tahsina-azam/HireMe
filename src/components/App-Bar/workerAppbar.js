@@ -4,6 +4,7 @@ import { styled } from "@mui/system";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import { useState } from "react";
+import Router from 'next/router'
 
 const CustomButton = styled("Button")({
   variant: "text",
@@ -46,8 +47,12 @@ export default function Navbar(props) {
           </Stack>
           
           <Stack direction='row' spacing={4}>
-            <CustomButton>Dashboard</CustomButton>
-            <CustomButton>Jobs</CustomButton>
+            <CustomButton onClick={(event)=>{
+             Router.push("/worker");
+           }}>Dashboard</CustomButton>
+            <CustomButton onClick={(event)=>{
+             Router.push("/worker/works");
+           }}>Jobs</CustomButton>
             <CustomButton>Logout</CustomButton>
           </Stack>
         </Toolbar>

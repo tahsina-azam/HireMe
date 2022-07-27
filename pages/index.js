@@ -9,6 +9,7 @@ import { useState } from "react";
 import RegisterModal from "../component/RegisterModal/RegisterModal";
 import LoginModal from "../component/RegisterModal/LoginModal";
 import AuthContext, { useAuth } from "../context/AuthProvider";
+import  Router  from "next/router";
 const CustomButton = styled("button")({
   variant: "text",
   color: "black",
@@ -23,6 +24,9 @@ export default function Home() {
   const [Modal, setModalOpen] = useState(false);
    const [signInModal, setsignInModalOpen] = useState(false);
   const [type,setType] = useState("");
+  const {user} = useAuth();
+ 
+  
   const signUpHandler = () => {
     setType("signUp")
     setModalOpen(true);

@@ -1,6 +1,9 @@
 import { Container, Grid, Link, Paper } from "@mui/material";
 import React from "react";
 import AllUserbudget from "./postbody";
+import AdminLibrarySearch from "../common/SearchBar";
+import { useState } from "react";
+
 
 const arr = [
   {
@@ -17,7 +20,7 @@ const arr = [
     type: "Plumber",
     days: "3",
     userid:"45355",
-    address: "9/1 thulapara,gaibandha"
+    address: "9/1 dhobdighirpar,sylhet"
   },
   {
     description: "I need a cook to cook in my house",
@@ -25,19 +28,23 @@ const arr = [
     type: "cook",
     days: "3",
     userid:"45325",
-    address: "9/1 thulapara,gaibandha"
+    address: "9/1 boddarhat,chittagong"
   },
 ];
 
 function AdminGrid() {
+  const [fields,setFields]=useState(arr);
   return (
     <>
-      <Container maxWidth="lg" sx={{ mt: 4, mb: 4, marginTop: 8 }}>
+      <Container maxWidth="lg" sx={{ mt: 4, mb: 4, marginTop: 10 }}>
+        <AdminLibrarySearch items={arr}
+              updateParent={setFields}/>
+      </Container>
+      <Container maxWidth="lg" sx={{ mt: 4, mb: 4, marginTop: 12 }}>
         <Grid container spacing={3}>
           {/* Chart */}
-
           {/* Recent Deposits */}
-          {arr.map((item) => (
+          {fields.map((item) => (
             <MemoisedCard
               key={item.description}
               description={item.description}
@@ -48,18 +55,6 @@ function AdminGrid() {
               userId={item.userid}
             />
           ))}
-          <Grid item xs={12}>
-            <Paper
-              sx={{
-                p: 2,
-                display: "flex",
-                flexDirection: "column",
-                height: 240,
-              }}
-            >
-             
-            </Paper>
-          </Grid>
         </Grid>
       </Container>
     </>

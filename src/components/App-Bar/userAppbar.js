@@ -4,6 +4,8 @@ import { styled } from "@mui/system";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import { useState } from "react";
+import Router from "next/router";
+
 
 const CustomButton = styled("Button")({
   variant: "text",
@@ -31,7 +33,7 @@ export default function Navbar(props) {
           color: "black",
         }}>
         <Toolbar sx={{ justifyContent: "space-between" }}>
-          <Stack direction='row'>
+          <Stack direction='row' spacing={4}>
             <Typography
               variant='h6'
               noWrap
@@ -46,9 +48,18 @@ export default function Navbar(props) {
           </Stack>
           
           <Stack direction='row' spacing={4}>
-            <CustomButton>Dashboard</CustomButton>
-            <CustomButton>post</CustomButton>
-            <CustomButton onClick={signUpHandler}>Profile</CustomButton>
+           <CustomButton onClick={(event)=>{
+             Router.push("/user");
+           }}>Dashboard</CustomButton>
+            <CustomButton onClick={(event)=>{
+             Router.push("/user/postWork");
+           }}>post</CustomButton>
+            <CustomButton onClick={(event)=>{
+             Router.push("/user/myposts");
+           }}>My posts</CustomButton>
+            <CustomButton onClick={(event)=>{
+             Router.push("/user/profile");
+           }}>Profile</CustomButton>
             <CustomButton>Logout</CustomButton>
           </Stack>
         </Toolbar>
