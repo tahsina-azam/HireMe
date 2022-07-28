@@ -22,12 +22,12 @@ export default function UserProfile() {
           alignItems: "center",
         }}
       >
-        <Card sx={{ maxWidth: 360 ,minWidth: 300 }}   style={{ border: "1px solid black" }}>
+        <Card sx={{ maxWidth: 400 ,minWidth: 360 }}   style={{ border: "1px solid black" }}>
       <CardMedia
         component="img"
         alt="green iguana"
-        height="200"
-        image="/user.png"
+        height="300"
+        image="/person.png"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">

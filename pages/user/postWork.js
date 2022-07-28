@@ -7,19 +7,17 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
-import Autocomplete from "@mui/material/Autocomplete";
 import SendIcon from '@mui/icons-material/Send';
 import NavBar from "../../src/components/App-Bar/userAppbar"
 import axios from "axios"
 import { useAuth } from '../../context/AuthProvider';
-import { useState } from 'react';
 const works = ["plumber", "ac repairer", "cook", "cleaner","pest control"];
-
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
 
 
 export default function BasicCard() {
    const {user} = useAuth();
-   const [type, setType] = useState("");
     const [values, setValues] = React.useState({
         description: '',
         address: '',
@@ -37,7 +35,7 @@ export default function BasicCard() {
           description: values.description,
           address: values.address,
           budget:values.budget,
-          type:type,
+          type:values.type,
           time:values.time
         };
         console.log(data);
@@ -112,11 +110,9 @@ export default function BasicCard() {
           onChange={handleChange('time')}
         />
         </FormControl>
-        <FormControl sx={{ m: 1 }} variant="filled"> 
-        <Autocomplete
-                    freeSolo
-                    value={type}
-                    disablePortal
+        <FormControl fullWidth sx={{ m: 1 }}  > 
+        {/* <Autocomplete
+        
                     id="combo-box-demo"
                     sx={{ width: 450 }}
                     options={works}
@@ -125,17 +121,32 @@ export default function BasicCard() {
                         {...params}
                         required
                         fullWidth
+                        value={values.type}
                         id="role"
                         label="type"
-                        name="role"
-                        onChange={(e) => {
-                          setVal(e.target.value);
-                          handleChange(val);
-                        }}
-                        //onChange={handleChange('type')}
+                        name="type"
+                        // onChange={(e) => {
+                        //   setType(e.target.value);
+                        //   handleChange(type);
+                        // }}
+                        onChange={handleChange('type')}
                       />
                     )}
-                  />
+                  /> */}
+                  <Select
+                     sx={{ width: 450 }}
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={values.type}
+                    label="type"
+                    onChange={handleChange('type')}
+                  >
+                    <MenuItem value={"plumber"}>Plumber</MenuItem>
+                    <MenuItem value={"ac repairer"}>AC Repairer</MenuItem>
+                    <MenuItem value={"cook"}>Cook</MenuItem>
+                    <MenuItem value={"cleaner"}>Cleaner</MenuItem>
+                    <MenuItem value={"pest control"}>Pest Control</MenuItem>
+                  </Select>
         </FormControl>
       </div>
       </CardContent>
