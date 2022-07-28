@@ -2,7 +2,12 @@ import { Container, Grid, Link, Paper } from "@mui/material";
 import React, { useState } from "react";
 import AllUserbudget from "./workerbody";
 import AdminLibrarySearch from "../common/SearchBar";
-
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import { Button } from "@mui/material";
+import SendIcon from '@mui/icons-material/Send';
 const arr = [
   {
     type: "Ac-Repairer",
@@ -48,12 +53,12 @@ function AdminGrid() {
 
 export default AdminGrid;
 
-const Card = ({ type,name,amount,rating,phone}) => {
+const card = ({ type,name,amount,rating,phone}) => {
   return (
     <>
       <Grid item xs={12} md={4} lg={4} >
         
-        <Paper
+        {/* <Paper
           sx={{
             padding: "2rem",
             border: "1px ",
@@ -64,14 +69,30 @@ const Card = ({ type,name,amount,rating,phone}) => {
             style={{ border: "1px solid black" ,backgroundColor:"lightskyblue"}}
         >
           <AllUserbudget type={type} name={name} amount={amount} rating={rating} phone={phone}/>
-        </Paper>
+        </Paper> */}
+        <Card sx={{ maxWidth: 345 }}>
+      <CardMedia
+        component="img"
+        alt="green iguana"
+        height="140"
+        image="/worker.jpg"
+      />
+      <CardContent>
+      <AllUserbudget type={type} name={name} amount={amount} rating={rating} phone={phone}/>
+      </CardContent>
+      <CardActions>
+      <Button variant="contained"  endIcon={<SendIcon />}>
+           Accepted
+      </Button>
+      </CardActions>
+    </Card>
         
       </Grid>
     </>
   );
 };
 
-const MemoisedCard = React.memo(Card);
+const MemoisedCard = React.memo(card);
 
  
  
