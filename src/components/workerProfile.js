@@ -19,16 +19,19 @@ function workerProfile() {
     <div>
       <Box
         sx={{
-          borderShadow: "10px",
-          marginTop: 10,
+          marginTop: 15,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}>
         <Stack direction='row' spacing={10}>
           <Card
-            sx={{ maxWidth: 360, minWidth: 300 }}
-          >
+            sx={{
+              maxWidth: 360,
+              minWidth: 300,
+              boxShadow:
+                "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+            }}>
             <CardMedia
               component='img'
               alt='green iguana'
