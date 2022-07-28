@@ -4,7 +4,7 @@ import { styled } from "@mui/system";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import { useState } from "react";
-import Router from 'next/router'
+import Router from "next/router";
 
 const CustomButton = styled("Button")({
   variant: "text",
@@ -17,10 +17,10 @@ const CustomButton = styled("Button")({
   cursor: "pointer",
 });
 export default function Navbar(props) {
-  const [signUpModal, setsignUpModalOpen]=useState(false)
-  const signUpHandler =()=>{
-   setsignUpModalOpen(true);
-  }
+  const [signUpModal, setsignUpModalOpen] = useState(false);
+  const signUpHandler = () => {
+    setsignUpModalOpen(true);
+  };
   return (
     <>
       <AppBar
@@ -28,7 +28,7 @@ export default function Navbar(props) {
         sx={{
           backgroundColor: "white",
           marginLeft: "20px",
-          boxShadow: "none",
+
           color: "black",
         }}>
         <Toolbar sx={{ justifyContent: "space-between" }}>
@@ -45,19 +45,30 @@ export default function Navbar(props) {
               HireMe
             </Typography>
           </Stack>
-          
+
           <Stack direction='row' spacing={4}>
-            <CustomButton onClick={(event)=>{
-             Router.push("/worker");
-           }}>Dashboard</CustomButton>
-            <CustomButton onClick={(event)=>{
-             Router.push("/worker/works");
-           }}>Jobs</CustomButton>
+            <CustomButton
+              onClick={(event) => {
+                Router.push("/worker");
+              }}>
+              Dashboard
+            </CustomButton>
+            <CustomButton
+              onClick={(event) => {
+                Router.push("/worker/works");
+              }}>
+              Jobs
+            </CustomButton>
+            <CustomButton
+              onClick={(event) => {
+                Router.push("/worker/publishprofile");
+              }}>
+              Publish Profile
+            </CustomButton>
             <CustomButton>Logout</CustomButton>
           </Stack>
         </Toolbar>
       </AppBar>
-      
     </>
   );
 }
