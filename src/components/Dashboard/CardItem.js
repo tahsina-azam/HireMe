@@ -2,6 +2,10 @@ import { Container, Grid, Link, Paper } from "@mui/material";
 import React, { useState } from "react";
 import AllUserbudget from "./CardBody";
 import AdminLibrarySearch from "../common/SearchBar";
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
 
 const arr = [
   {
@@ -76,12 +80,12 @@ function AdminGrid() {
 
 export default AdminGrid;
 
-const Card = ({ type,link }) => {
+const card = ({ type,link }) => {
   return (
     <>
       <Grid item xs={12} md={4} lg={4} >
         <a href={link}>
-        <Paper
+        {/* <Paper
           sx={{
             padding: "2rem",
             border: "1px ",
@@ -92,14 +96,26 @@ const Card = ({ type,link }) => {
             style={{ border: "1px solid black" ,backgroundColor:"lightskyblue"}}
         >
           <AllUserbudget type={type} link={link}/>
-        </Paper>
+        </Paper> */}
+      <Card sx={{ maxWidth: 345 }}>
+      <CardMedia
+        component="img"
+        alt="green iguana"
+        height="140"
+        image="/vector.png"
+      />
+      <CardContent>
+      <AllUserbudget type={type} link={link}/>
+      </CardContent>
+      
+    </Card>
         </a>
       </Grid>
     </>
   );
 };
 
-const MemoisedCard = React.memo(Card);
+const MemoisedCard = React.memo(card);
 
  
  
