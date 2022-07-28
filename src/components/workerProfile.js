@@ -13,7 +13,7 @@ import ListSubheader from "@mui/material/ListSubheader";
 import { useAuth } from "../../context/AuthProvider";
 import { Box } from "@mui/system";
 
-function workerProfile() {
+export default function workerProfile() {
   const { user } = useAuth();
   return (
     <div>
@@ -89,5 +89,3 @@ function workerProfile() {
     </div>
   );
 }
-
-export default workerProfile;
