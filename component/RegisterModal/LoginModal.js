@@ -46,14 +46,14 @@ export default function LoginModal(props) {
       setEmail("");
       setPassword("");
     props.handleClose(false);
-    if(user){
-      if(user.role=="client"){
-       router.push("/user");
-      }
-      else{
-        router.push("/worker");
-      }
-    }
+    // if(user){
+    //   if(user.role=="client"){
+    //    router.push("/user");
+    //   }
+    //   else{
+    //     router.push("/worker");
+    //   }
+    // }
     
   };
    console.log(props.open)

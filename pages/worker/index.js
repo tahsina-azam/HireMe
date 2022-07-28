@@ -12,15 +12,15 @@ export default function () {
   );
 }
 
-export async function getServerSideProps(ctx) {
-  const cookie = ctx.req.headers.cookie;
-  const res = await axios.get("http://localhost:3000/api/worker/profiles", {
-    headers: {
-      cookie: cookie,
-    },
-  });
-  console.log(cookie);
-  return {
-    props: { yo: "yo" },
-  };
-}
+// export async function getServerSideProps(ctx) {
+//   const cookie = ctx.req.headers.cookie;
+//   const res = await axios.get("http://localhost:3000/api/worker/profiles", {
+//     headers: {
+//       cookie: cookie,
+//     },
+//   });
+//   console.log(cookie);
+//   return {
+//     props: { yo: "yo" },
+//   };
+// }
