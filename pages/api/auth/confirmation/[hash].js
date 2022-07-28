@@ -15,15 +15,18 @@ export default async (req, res) => {
     await executeQuery("DELETE FROM pendingUsers WHERE email=(?)", [
       user.email
     ]);
+    const Userid = Date.now();
     await executeQuery("INSERT INTO users (userId,name,email,password,role,nid) VALUES(?,?,?,?,?,?)", [
-      Date.now(),
+     Userid,
       getUser[0].name,
       getUser[0].email,
       getUser[0].password,
       getUser[0].role,
       getUser[0].nid
     ]);
+   
     const currentUser = {
+      id: Userid,
       name: getUser[0].name,
       email: user.email,
       role: getUser[0].role,
@@ -33,7 +36,7 @@ export default async (req, res) => {
       res.redirect("/user");
     }
     else{
-      res.redirect("/worker");
+      res.redirect("/worker/publishprofile");
     }
     //res.redirect("/");
   }

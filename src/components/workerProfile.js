@@ -11,13 +11,12 @@ import { Box } from '@mui/system';
 import CommentBody from './comments/commentCard';
 
 function workerProfile() {
-  const {user}=useAuth();
+  const { user } = useAuth();
   return (
     <div>
-          <Box
+      <Box
         sx={{
-          borderColor: 'secondary',
-          marginTop: 10,
+          marginTop: 15,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -81,7 +80,7 @@ function workerProfile() {
           </Grid>
       
     </div>
-  )
+  );
 }
 
-export default workerProfile
+export default workerProfile;

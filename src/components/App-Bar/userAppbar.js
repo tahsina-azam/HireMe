@@ -6,7 +6,6 @@ import Stack from "@mui/material/Stack";
 import { useState } from "react";
 import Router from "next/router";
 
-
 const CustomButton = styled("Button")({
   variant: "text",
   color: "black",
@@ -18,10 +17,10 @@ const CustomButton = styled("Button")({
   cursor: "pointer",
 });
 export default function Navbar(props) {
-  const [signUpModal, setsignUpModalOpen]=useState(false)
-  const signUpHandler =()=>{
-   setsignUpModalOpen(true);
-  }
+  const [signUpModal, setsignUpModalOpen] = useState(false);
+  const signUpHandler = () => {
+    setsignUpModalOpen(true);
+  };
   return (
     <>
       <AppBar
@@ -29,7 +28,7 @@ export default function Navbar(props) {
         sx={{
           backgroundColor: "white",
           marginLeft: "20px",
-          boxShadow: "none",
+
           color: "black",
         }}>
         <Toolbar sx={{ justifyContent: "space-between" }}>
@@ -46,25 +45,36 @@ export default function Navbar(props) {
               HireMe
             </Typography>
           </Stack>
-          
+
           <Stack direction='row' spacing={4}>
-           <CustomButton onClick={(event)=>{
-             Router.push("/user");
-           }}>Dashboard</CustomButton>
-            <CustomButton onClick={(event)=>{
-             Router.push("/user/postWork");
-           }}>post</CustomButton>
-            <CustomButton onClick={(event)=>{
-             Router.push("/user/myposts");
-           }}>My posts</CustomButton>
-            <CustomButton onClick={(event)=>{
-             Router.push("/user/profile");
-           }}>Profile</CustomButton>
+            <CustomButton
+              onClick={(event) => {
+                Router.push("/user");
+              }}>
+              Dashboard
+            </CustomButton>
+            <CustomButton
+              onClick={(event) => {
+                Router.push("/user/postWork");
+              }}>
+              post
+            </CustomButton>
+            <CustomButton
+              onClick={(event) => {
+                Router.push("/user/myposts");
+              }}>
+              My posts
+            </CustomButton>
+            <CustomButton
+              onClick={(event) => {
+                Router.push("/user/profile");
+              }}>
+              Profile
+            </CustomButton>
             <CustomButton>Logout</CustomButton>
           </Stack>
         </Toolbar>
       </AppBar>
-      
     </>
   );
 }
