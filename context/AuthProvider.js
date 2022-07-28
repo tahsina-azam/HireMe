@@ -59,6 +59,11 @@ export const AuthProvider = ({ children }) => {
         setUser({ email: email, name: name, role:role });
       if (result.data.role == "admin") setIsAdmin(true);
       setLoading(false);
+      if(role='Service Provider')
+      router.push("/worker");
+      else if(role='client')
+      router.push("/user");
+      else
       router.push("/");
     } catch (e) {
       console.log(e);

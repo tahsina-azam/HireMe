@@ -1,17 +1,14 @@
 import React from 'react'
-import { Stack } from '@mui/material'
+import { Stack,Grid,Item } from '@mui/material'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import ListSubheader from '@mui/material/ListSubheader';
 import { useAuth } from '../../context/AuthProvider';
 import { Box } from '@mui/system';
+import CommentBody from './comments/commentCard';
 
 function workerProfile() {
   const {user}=useAuth();
@@ -26,13 +23,13 @@ function workerProfile() {
           alignItems: "center",
         }}
       >
-        <Stack direction="row" spacing={10}>
-        <Card sx={{ maxWidth: 360 ,minWidth: 300 }}   style={{ border: "1px solid black" }}>
+        
+        <Card sx={{ maxWidth: 360 ,minWidth: 360 }}   style={{ border: "1px solid black" }}>
       <CardMedia
         component="img"
         alt="green iguana"
         height="200"
-        image="/user.png"
+        image="/person.png"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -44,6 +41,9 @@ function workerProfile() {
         <Typography gutterBottom variant="h7" component="div">
           {user.email}
         </Typography>
+        <Typography gutterBottom variant="h7" component="div">
+          Total orders: 100
+        </Typography>
         <Typography variant="body2" color="text.secondary">
           Adress: Guali gram, Gaibandha
         </Typography>
@@ -53,36 +53,33 @@ function workerProfile() {
             update account
       </Button>
       </CardActions>
-    </Card>
-    <List
-      sx={{
-        width: '150%',
-        maxWidth: 360,
-        minWidth:300,
-        bgcolor: 'background.paper',
-        position: 'relative',
-        overflow: 'auto',
-        maxHeight: 400,
-        '& ul': { padding: 0 },
-      }}
-      style={{ border: "1px solid black" }}
-      subheader={<li />}
-    >
-      {[0, 1, 2, 3, 4].map((sectionId) => (
-        <li key={`section-${sectionId}`}>
-          <ul>
-            <ListSubheader>{`anonymous ${sectionId}`}</ListSubheader>
-            {[1].map((item) => (
-              <ListItem key={`item-${sectionId}-${item}`}>
-                <ListItemText primary={`Rated 10 out of 10 review: ${item} work was good`} />
-              </ListItem>
-            ))}
-          </ul>
-        </li>
-      ))}
-    </List>
-        </Stack>
+    </Card>  
         </Box>
+        {/* <Box
+        sx={{
+          borderColor: 'secondary',
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent:"center",
+        }}
+      >
+         
+        <CommentBody/>
+        </Box> */}
+        
+        <Grid
+            container
+            spacing={0}
+            direction="column"
+            alignItems="center"
+            justifyContent="center"
+            style={{ minHeight: '100vh' ,maxWidth:500,marginLeft:400}}
+          >
+           
+            <CommentBody/>
+          </Grid>
+      
     </div>
   )
 }
