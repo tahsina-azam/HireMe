@@ -57,19 +57,6 @@ const card = ({ type,name,amount,rating,phone}) => {
   return (
     <>
       <Grid item xs={12} md={4} lg={4} >
-        
-        {/* <Paper
-          sx={{
-            padding: "2rem",
-            border: "1px ",
-            display: "flex",
-            flexDirection: "column",
-            bgcolor: "lightskyblue"
-          }}
-            style={{ border: "1px solid black" ,backgroundColor:"lightskyblue"}}
-        >
-          <AllUserbudget type={type} name={name} amount={amount} rating={rating} phone={phone}/>
-        </Paper> */}
         <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
@@ -85,8 +72,7 @@ const card = ({ type,name,amount,rating,phone}) => {
            Accepted
       </Button>
       </CardActions>
-    </Card>
-        
+    </Card>   
       </Grid>
     </>
   );
