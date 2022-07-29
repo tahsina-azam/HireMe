@@ -1,31 +1,23 @@
 import { Container, Grid, Link, Paper } from "@mui/material";
 import React, { useState } from "react";
-import AllUserbudget from "./profilebody";
+import AllUserbudget from "./cardbody";
 import AdminLibrarySearch from "../common/SearchBar";
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import { Button } from "@mui/material";
-import SendIcon from '@mui/icons-material/ContactPhone';
-
+import SendIcon from '@mui/icons-material/Check';
+import DeleteIcon from '@mui/icons-material/Clear'
 const arr = [
   {
     type: "Ac-Repairer",
-    name: "Rahim Sheikh",
+    name: "Iyachmin Rahman",
     amount: "rahim@gmail.com",
     rating: 9.5,
     area: "kaptai,chittagong",
     phone: "0132494859"
   },
-  {
-    type: "Ac-Repairer",
-    name: "Karim Sheikh",
-    amount: "karim@gmail.com",
-    rating: 5,
-    area:"akhalia,sylhet",
-    phone: "0132494859"
-  }, 
 ];
 
 function AdminGrid() {
@@ -60,33 +52,23 @@ export default AdminGrid;
 const card = ({ type,name,amount,rating,area,phone}) => {
   return (
     <>
-      <Grid item xs={12} md={4} lg={4} >
-        
-        {/* <Paper
-          sx={{
-            padding: "2rem",
-            border: "1px ",
-            display: "flex",
-            flexDirection: "column",
-            bgcolor: "lightskyblue"
-          }}
-            style={{ border: "1px solid black" ,backgroundColor:"lightskyblue"}}
-        >
-          <AllUserbudget type={type} name={name} amount={amount} rating={rating} phone={phone} area={area}/>
-        </Paper> */}
-        <Card sx={{ maxWidth: 345 }}>
+      <Grid item xs={15} md={4} lg={4} >
+        <Card sx={{ maxWidth: 400 }}>
       <CardMedia
         component="img"
         alt="green iguana"
-        height="140"
-        image="/worker.jpg"
+        height="300"
+        image="/identity.jpg"
       />
       <CardContent>
-      <AllUserbudget type={type} name={name} amount={amount} rating={rating} area={area}/>
+      <AllUserbudget type={type} name={name} amount={amount} rating={rating} area={area} phone={phone}/>
       </CardContent>
-      <CardActions style={{justifyContent: 'center'}}>
+      <CardActions >
       <Button variant="contained" endIcon={<SendIcon />}>
-           Contact
+           Accept
+      </Button>
+      <Button variant="contained" endIcon={<DeleteIcon />} color="error">
+           Decline
       </Button>
       </CardActions>
     </Card>

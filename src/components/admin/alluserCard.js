@@ -1,13 +1,14 @@
 import { Container, Grid, Link, Paper } from "@mui/material";
 import React, { useState } from "react";
-import AllUserbudget from "./profilebody";
+import AllUserbudget from "./alluserBody";
 import AdminLibrarySearch from "../common/SearchBar";
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import { Button } from "@mui/material";
-import SendIcon from '@mui/icons-material/ContactPhone';
+import SendIcon from '@mui/icons-material/Check';
+import DeleteIcon from '@mui/icons-material/Clear'
 
 const arr = [
   {
@@ -61,32 +62,22 @@ const card = ({ type,name,amount,rating,area,phone}) => {
   return (
     <>
       <Grid item xs={12} md={4} lg={4} >
-        
-        {/* <Paper
-          sx={{
-            padding: "2rem",
-            border: "1px ",
-            display: "flex",
-            flexDirection: "column",
-            bgcolor: "lightskyblue"
-          }}
-            style={{ border: "1px solid black" ,backgroundColor:"lightskyblue"}}
-        >
-          <AllUserbudget type={type} name={name} amount={amount} rating={rating} phone={phone} area={area}/>
-        </Paper> */}
         <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
         alt="green iguana"
-        height="140"
-        image="/worker.jpg"
+        height="250"
+        image="/person.png"
       />
       <CardContent>
       <AllUserbudget type={type} name={name} amount={amount} rating={rating} area={area}/>
       </CardContent>
       <CardActions style={{justifyContent: 'center'}}>
       <Button variant="contained" endIcon={<SendIcon />}>
-           Contact
+           Accept
+      </Button>
+      <Button variant="contained" endIcon={<DeleteIcon />} color="error">
+           Decline
       </Button>
       </CardActions>
     </Card>

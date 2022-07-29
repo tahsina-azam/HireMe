@@ -6,7 +6,7 @@ import SendIcon from '@mui/icons-material/Send';
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 
-export default function UsersCount({ type,name,amount,rating , area}) {
+export default function UsersCount({ type,name,amount,rating,phone , area}) {
   
   return (
     <React.Fragment>
@@ -16,9 +16,9 @@ export default function UsersCount({ type,name,amount,rating , area}) {
       <Typography variant="h6">
         {type}
       </Typography>
-      {/* <Typography variant="h6">
+      <Typography variant="h6">
         {phone}
-      </Typography> */}
+      </Typography>
       <Typography variant="h6">
         {area}
       </Typography>
