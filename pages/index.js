@@ -9,7 +9,7 @@ import { useState } from "react";
 import RegisterModal from "../component/RegisterModal/RegisterModal";
 import LoginModal from "../component/RegisterModal/LoginModal";
 import AuthContext, { useAuth } from "../context/AuthProvider";
-import  Router  from "next/router";
+import Router from "next/router";
 const CustomButton = styled("button")({
   variant: "text",
   color: "black",
@@ -22,23 +22,22 @@ const CustomButton = styled("button")({
 });
 export default function Home() {
   const [Modal, setModalOpen] = useState(false);
-   const [signInModal, setsignInModalOpen] = useState(false);
-  const [type,setType] = useState("");
-  const {user} = useAuth();
- 
-  
+  const [signInModal, setsignInModalOpen] = useState(false);
+  const [type, setType] = useState("");
+  const { user } = useAuth();
+
   const signUpHandler = () => {
-    setType("signUp")
+    setType("signUp");
     setModalOpen(true);
   };
   const signInHandler = () => {
-    console.log('yoooooo')
+    console.log("yoooooo");
     setsignInModalOpen(true);
   };
- const serviceProviderHandler = () =>{
-   setType("service")
+  const serviceProviderHandler = () => {
+    setType("service");
     setModalOpen(true);
-  }
+  };
   return (
     <>
       <AppBar
@@ -56,7 +55,7 @@ export default function Home() {
               noWrap
               component='div'
               sx={{
-                color: "black",
+                color: "#2B468A",
                 fontFamily: "futura",
                 fontWeight: "bold",
               }}>
@@ -65,19 +64,20 @@ export default function Home() {
           </Stack>
           <Stack direction='row' spacing={4}>
             <CustomButton>Explore</CustomButton>
-            <CustomButton onClick={serviceProviderHandler}>Become a service provider</CustomButton>
+            <CustomButton onClick={serviceProviderHandler}>
+              Become a service provider
+            </CustomButton>
             <CustomButton onClick={signInHandler}>SignIn</CustomButton>
             <CustomButton onClick={signUpHandler}>Join</CustomButton>
           </Stack>
         </Toolbar>
       </AppBar>
       {Modal && (
-        <RegisterModal open={Modal} handleClose={setModalOpen} type={type}/>
+        <RegisterModal open={Modal} handleClose={setModalOpen} type={type} />
       )}
       {signInModal && (
-        <LoginModal open={signInModal} handleClose={setsignInModalOpen}/>
+        <LoginModal open={signInModal} handleClose={setsignInModalOpen} />
       )}
-     
 
       <Stack
         direction='row'

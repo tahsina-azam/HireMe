@@ -38,7 +38,7 @@ export default function Navbar(props) {
               noWrap
               component='div'
               sx={{
-                color: "black",
+                color: "#2B468A",
                 fontFamily: "futura",
                 fontWeight: "bold",
               }}>
